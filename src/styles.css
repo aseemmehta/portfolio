@@ -1,0 +1,43 @@
+:root{--bg:#F7F8F7;--surface:#fff;--ink:#0F172A;--mute:#475569;--line:#DDE3E0;--green:#0A8F5C;--on-green:#fff}
+[data-theme=dark]{--bg:#020617;--surface:#0B1426;--ink:#E7EEF5;--mute:#98A6B8;--line:#1C2940;--green:#10B981;--on-green:#03140E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.08rem/1.6 'Hanken Grotesk',system-ui,sans-serif;transition:background .2s,color .2s}
+.page{max-width:70rem;margin:0 auto}
+h1,h2,h3{font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:0 0 .6rem}
+a{color:var(--green)}a:focus-visible,button:focus-visible{outline:3px solid var(--green);outline-offset:3px}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1.5rem;padding:1rem 1.5rem}
+.brand{font-weight:800;letter-spacing:-.02em;color:var(--ink);text-decoration:none;font-size:1.2rem}
+nav{display:flex;flex-wrap:wrap;gap:.2rem 1.4rem}nav a{color:var(--mute);text-decoration:none;padding:.2rem 0;border-bottom:2px solid transparent}
+nav a:hover{color:var(--ink)}nav a.active{color:var(--ink);border-color:var(--green)}
+.tools{display:flex;align-items:center;gap:.75rem}
+.tog{font:inherit;font-size:.95rem;background:none;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:.3rem .8rem;cursor:pointer}.tog:hover{border-color:var(--green)}
+.btn{display:inline-block;background:var(--green);color:var(--on-green);font-weight:600;padding:.7rem 1.3rem;border-radius:8px;text-decoration:none}
+.btn:hover{filter:brightness(1.08)}.btn.sm{padding:.35rem .95rem}.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}.btn.ghost:hover{border-color:var(--green)}
+main,footer{padding:0 1.5rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;}
+section{padding:2.5rem 0;border-top:1px solid var(--line)}
+h2{font-size:2rem}.ph{font-size:clamp(2.4rem,7vw,4.5rem)}.pg{border-top:0}
+.row{display:grid;grid-template-columns:12rem 1fr;gap:.5rem;margin:.3rem 0;padding-top:.5rem;border-top:1px solid var(--line)}.row span{color:var(--mute)}
+@media(max-width:600px){.row{grid-template-columns:1fr;gap:0}}
+.job{margin:1.4rem 0}.job h3{font-size:1.3rem}.job small{color:var(--mute)}.job ul{margin:.4rem 0;padding-left:1.1rem}
+blockquote{margin:1.2rem 0;padding:1.2rem 1.5rem;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--green);border-radius:10px;font-size:1.2rem;max-width:48rem}
+cite{display:block;margin-top:.6rem;font-size:.95rem;font-style:normal;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.25rem;margin:1rem 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.25rem;transition:border-color .2s}.card:hover{border-color:var(--green)}
+.card h3{font-size:1.3rem}.tags{color:var(--mute);font-size:.95rem}.more{font-weight:600}
+.priv{font-size:.85rem;border:1px solid var(--line);border-radius:999px;padding:.1rem .7rem;color:var(--mute)}
+.topics section{padding:1.4rem 0}.topics p{max-width:62ch;color:var(--mute)}
+footer{padding:2rem 1.5rem 3rem;border-top:1px solid var(--line)}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.heroimg{display:block;width:100%;aspect-ratio:2.3/1;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+[data-theme=dark] .heroimg{filter:brightness(.72) saturate(.9)}
+.intro2{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;align-items:end;padding:2rem 0}
+.intro2 h1{font-size:clamp(2.4rem,5.5vw,4.2rem);margin:0}.intro{color:var(--mute);font-size:1.15rem;max-width:44rem;margin:0 0 1.2rem}
+.split{display:grid;grid-template-columns:minmax(0,2fr) minmax(15rem,1fr);gap:2.5rem}
+.split aside{position:sticky;top:1rem;align-self:start;padding-top:2.5rem;display:grid;gap:1.25rem}
+.side{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.25rem}.side h3{font-size:1.2rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:.5rem 0 .8rem}.chips span{border:1px solid var(--line);border-radius:999px;padding:.1rem .7rem;font-size:.95rem}
+.quotes{display:grid;gap:1rem}.quotes blockquote{margin:0;font-size:1.05rem}
+.feat .card:first-child{grid-column:span 2}.feat .card:first-child h3{font-size:1.8rem}
+@media(max-width:800px){.intro2,.split{grid-template-columns:1fr}.split aside{position:static;padding-top:0}.feat .card:first-child{grid-column:auto}}
