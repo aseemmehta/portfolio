@@ -39,22 +39,7 @@ export const journey = [
   { when: 'Internship, Sep 2020 to Aug 2021', org: 'Rochester Institute of Technology', role: 'MS in Computer Science, 2021', text: 'Completed an intensive Master\'s spanning Software Engineering and Data Science (plus a Graduate Certificate in Big Data Analytics), while building an end-to-end Oracle, Python (pandas, NumPy, scikit-learn), and Tableau analytics system from scratch during my internship as a Python Programmer / Data Analyst, cutting query times by 40%.' },
   { when: 'Oct 2013 to Jun 2018', org: 'Infosys Ltd', role: 'Team Leader (Technology Analyst / Senior Systems Engineer)', text: 'Led a 9-member team across offshore (India) and onshore (UK) engagements, spotting operational pain points, automating IAM provisioning and audit compliance workflows, and designing a cross-system license optimization tool that recovered ~£1.8M.' },
 ]
-// kind: 'genai' | 'sde' | 'academic' decides the Projects page section. featured: true shows on Home (first 3, in this order).
-// label shows when there is no link. This one list feeds both Home and Projects.
-export const projects = [
-  { title: 'Job-Radar', kind: 'genai', featured: true, label: 'Private project', blurb: 'Multi-service personal job intelligence system built with Claude and Python/SQLite: automated job Scraper, ATS resume-to-JD scoring engine, advanced Filter command service, scheduled Cleanup keeping SQLite lean, trend Analytics, and Frontend UI.', tags: ['Python', 'SQLite', 'Claude'], link: '' },
-  { title: 'Tasker', kind: 'genai', featured: true, label: 'Public repo', blurb: 'Lightweight, distraction-free goal time-tracking application integrated with Google to track time spent on personal goals.', tags: ['Google integration', 'Gen AI'], link: '' }, // TODO: paste the Tasker GitHub repo URL here
-  { title: 'This Portfolio Site', kind: 'genai', featured: false, label: 'This site', blurb: 'Iteratively designed and built using Gen AI.', tags: ['React', 'Vite', 'GitHub Pages', 'Gen AI'], link: '' },
-  { title: 'TODO: SDE project', kind: 'sde', featured: true, label: 'Coming soon', blurb: 'What it does, your role, and the stack.', tags: ['Java'], link: '' }, // will be filled after the Fintech microservices repositories are cleaned up
-  { title: 'Robust Audio Classification Using Image Classifiers', kind: 'academic', featured: false, label: 'Academic project', link: '',
-    pills: ['Python', 'TensorFlow', 'Keras', 'VGG16', 'ResNet50', 'InceptionV3', 'POWDER 5G'],
-    details: [
-      'Developed an end-to-end deep learning pipeline in Python using TensorFlow (via Keras) to classify environmental sounds (gunshots vs. fireworks) by converting audio clips into spectrogram images and applying transfer learning with pre-trained VGG16, ResNet50, and InceptionV3 models.',
-      'Achieved >95% accuracy on clean data, with InceptionV3 demonstrating the highest consistency across degraded samples.',
-      'Evaluated model robustness under simulated network conditions using the POWDER 5G network emulator, introducing 10–80% packet loss across 3,200+ generated samples to prove resilience in bandwidth-constrained environments.',
-      'Applied early stopping and callback mechanisms to prevent overfitting and improve generalization across varying data quality.',
-      'Demonstrated feasibility of deploying the trained models on bandwidth-limited IoT devices.'] },
-]
+// Projects now live in ./data/projects.js (one list feeds Home, /projects and #/projects/:slug).
 export const sde = [
   ['Service design', 'Object-oriented design with structural patterns for scalable REST APIs and Spring Boot microservices serving 800,000+ external users.'],
   ['Security', 'A Spring Boot gateway between an AngularJS frontend and core APIs, with OAuth 2.0 and request tracing.'],
@@ -67,7 +52,7 @@ export const sde = [
 export const ai = [
   ['Data engineering and analytics', 'End-to-end Oracle, PL/SQL, Python (pandas), and Tableau pipelines powering self-service dashboards, including cron-scheduled query optimizations that cut execution time by 40%. Graduate Certificate in Big Data Analytics.'],
   ['Machine learning', 'Two-tier Python execution layer using scikit-learn and NumPy for donor prediction on alumni demographic data, writing insights back to Oracle to minimize I/O overhead.'],
-  ['Academic projects', 'Robust Audio Classification Capstone: spectrogram-based transfer learning with VGG16, ResNet50, and InceptionV3 achieving >95% clean accuracy and tested under POWDER 5G packet loss.', null, ['View full details on Projects', '/projects']],
+  ['Academic projects', 'Robust Audio Classification Capstone: spectrogram-based transfer learning with VGG16, ResNet50, and InceptionV3 achieving >95% clean accuracy and tested under POWDER 5G packet loss.', null, ['Read the full capstone story', '/projects/audio-classification']],
 ]
 export const certs = [
   { name: 'Certified Scrum Developer', issuer: 'Scrum Alliance', link: 'https://bcert.me/scwjmgbdm' },

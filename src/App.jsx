@@ -1,16 +1,14 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { NavLink, Navigate, Routes, Route, Link, useLocation } from 'react-router-dom'
-import { profile, stack, experience, recommendations, projects, journey, sde, ai, certs, core } from './data.js'
+import { profile, stack, experience, recommendations, journey, sde, ai, certs, core } from './data.js'
+import { projects, CATEGORIES } from './data/projects.js'
+import ProjectCard from './ProjectCard.jsx'
+import ProjectDetail from './ProjectDetail.jsx'
+import { Ext } from './ui.jsx'
 
-const Ext = ({ href, className, children }) => <a className={className} href={href} target="_blank" rel="noopener noreferrer">{children}</a>
-const Card = ({ p }) => (
-  <article className={'card' + (p.details ? ' wide' : '')}><h3>{p.title}</h3>{p.blurb && <p>{p.blurb}</p>}
-    {p.pills && <p className="chips">{p.pills.map(x => <span key={x}>{x}</span>)}</p>}
-    {p.details && <ul>{p.details.map(d => <li key={d}>{d}</li>)}</ul>}
-    {p.tags && <p className="tags">{p.tags.join(', ')}</p>}
-    {p.link ? <Ext href={p.link}>View on GitHub</Ext> : <span className="priv">{p.label || 'Private project'}</span>}</article>)
 const Topics = ({ items }) => <div className="topics">{items.map(([h, t, list, to]) => <section key={h}><h3>{h}</h3><p>{t}</p>{list && <ul>{list.map(([n, d]) => <li key={n}><b>{n}</b>: {d}</li>)}</ul>}{to && <p className="more"><Link to={to[1]}>{to[0]}</Link></p>}</section>)}</div>
-const Group = ({ title, kind }) => <><h2>{title}</h2><div className="grid">{projects.filter(p => p.kind === kind).map(p => <Card key={p.title} p={p} />)}</div></>
+const GROUP_TITLES = { 'Academic / Capstone': 'Academic / Capstone Project' }
+const Group = ({ category }) => <><h2>{GROUP_TITLES[category] || category}</h2><div className="grid">{projects.filter(p => p.category === category).map(p => <ProjectCard key={p.slug} p={p} />)}</div></>
 const Page = ({ title, children }) => <section className="pg"><h1 className="ph">{title}</h1>{children}</section>
 
 
@@ -82,14 +80,14 @@ function Home() {
     <div className="split">
       <div>
         <section><h2>Production experience</h2>{experience.map(e => <div className="job" key={e.org}><h3>{e.role}, {e.org}</h3><small>{e.when}</small><ul>{e.points.map(x => <li key={x}>{x}</li>)}</ul></div>)}</section>
-        <section><h2>Kind words</h2><div className="quotes">{recommendations.filter(r => r.featured).map(r => <blockquote key={r.who}>{r.quote}<cite>{r.who}, {r.role}</cite></blockquote>)}</div><p className="morelink"><Ext className="more" href={profile.recsUrl}>Read all recommendations on LinkedIn</Ext></p></section>
+        <section><h2>Testimonials</h2><div className="quotes">{recommendations.filter(r => r.featured).map(r => <blockquote key={r.who}>{r.quote}<cite>{r.who}, {r.role}</cite></blockquote>)}</div><p className="morelink"><Ext className="more" href={profile.recsUrl}>Read all recommendations on LinkedIn</Ext></p></section>
       </div>
       <aside>
         <div className="side"><h3>Core stack</h3><p className="chips">{core.map(c => <span key={c}>{c}</span>)}</p><Link to="/journey">The full stack and my journey</Link></div>
         <div className="side"><h3>Say hello</h3><p>LinkedIn is the best way to reach me.</p><Ext className="btn sm" href={profile.linkedin}>Open LinkedIn</Ext></div>
       </aside>
     </div>
-    <section><h2>Featured projects</h2><div className="grid feat">{projects.filter(p => p.featured).slice(0, 3).map(p => <Card key={p.title} p={p} />)}</div></section>
+    <section><h2>Featured projects</h2><div className="grid feat">{projects.filter(p => p.featured).slice(0, 3).map(p => <ProjectCard key={p.slug} p={p} />)}</div></section>
   </>)
 }
 
@@ -128,7 +126,8 @@ export default function App() {
         <Route path="/about" element={<Navigate to="/journey" replace />} />
         <Route path="/sde" element={<Page title="Software development"><Topics items={sde} /></Page>} />
         <Route path="/ai" element={<Page title="Data science and machine learning"><Topics items={ai} /></Page>} />
-      <Route path="/projects" element={<Page title="Projects"><Group title="Built using Gen AI" kind="genai" /><Group title="Software Development" kind="sde" /><Group title="Academic / Capstone Project" kind="academic" /></Page>} />
+      <Route path="/projects" element={<Page title="Projects">{CATEGORIES.map(c => <Group key={c} category={c} />)}</Page>} />
+      <Route path="/projects/:slug" element={<ProjectDetail />} />
       <Route path="/certifications" element={<Page title="Certifications"><div className="grid g2">{certs.map(c => <article className="card" key={c.name}><h3>{c.name}</h3><p>{c.issuer}{c.when ? ', ' + c.when : ''}</p>{c.link ? <Ext href={c.link}>Verify credential</Ext> : null}</article>)}</div></Page>} />
       </Routes></main>
     </div>

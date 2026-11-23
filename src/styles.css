@@ -81,6 +81,53 @@ main>:last-child,.pg>:last-child{padding-bottom:0;margin-bottom:0}
 .when{display:block;margin-bottom:.35rem;color:var(--green);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.12em}
 .mile h3{font-size:1.4rem;margin-bottom:.2rem}.mile p{margin:.3rem 0 0;color:var(--mute)}.mile .role{color:var(--ink);font-weight:600}
 
+/* Project teaser cards */
+.teaser{display:flex;flex-direction:column;align-items:flex-start}
+.teaser .eyebrow{margin:0 0 .6rem;font-size:.75rem;letter-spacing:.12em}
+.teaser h3{font-size:1.25rem}
+.teaser .sum{margin:.2rem 0 0;color:var(--mute);font-size:1rem}
+.teaser .chips{margin:.9rem 0 1.2rem}.teaser .chips span{font-size:.85rem}
+.teaser .btn{margin-top:auto}
+.feat .teaser:first-child h3{font-size:1.6rem}
+
+/* Project detail */
+.detail{padding-top:1.5rem}
+.back{margin:0 0 1.2rem;font-weight:600}.back a{text-decoration:none}.back a:hover{text-decoration:underline}
+.dhead .eyebrow{margin-bottom:.7rem}
+.dh{font-size:clamp(2rem,5.2vw,3.6rem);letter-spacing:-.04em;line-height:1.05;max-width:24ch;margin:0 0 1rem}
+.dhead .chips span{background:var(--surface)}
+.repo{margin:.4rem 0 0}
+.pg .ds{padding:2.2rem 0 0}
+.ds h2{font-size:clamp(1.6rem,3.2vw,2.2rem)}
+.lead{color:var(--mute);max-width:52rem;margin:.4rem 0 .8rem}
+.note{color:var(--mute);font-size:.95rem;margin:.2rem 0 1.4rem}
+.hl{margin-top:1rem}.hl .card h3{font-size:1.15rem}.hl .card p{margin:0;color:var(--mute)}
+.outcomes{margin:.8rem 0 0;padding:0;list-style:none;display:grid;gap:.7rem;max-width:52rem}
+.outcomes li{position:relative;padding:.9rem 1.1rem .9rem 2.6rem;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.outcomes li::before{content:"\2713";position:absolute;left:1rem;top:.9rem;color:var(--green);font-weight:800}
+
+/* Architecture diagram */
+.flow{display:flex;gap:.5rem;align-items:stretch;margin:1.2rem 0 .8rem}
+.flow.chain .node{flex:1 1 0;min-width:0}
+.flow.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem}
+.node{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1rem 1.1rem;box-shadow:var(--shadow)}
+.node h3{font-size:1.1rem;margin:0 0 .15rem}
+.node small{display:block;color:var(--mute);font-size:.85rem;line-height:1.35}
+.node p{margin:.5rem 0 0;color:var(--mute);font-size:.92rem;line-height:1.4}
+.node.edge{background:transparent;border-style:dashed;box-shadow:none}
+.port{display:inline-block;margin-top:.6rem;padding:.05rem .65rem;border-radius:999px;font-size:.78rem;font-weight:600;border:1px solid var(--line);color:var(--mute)}
+.port.pub{background:color-mix(in srgb,var(--green) 14%,transparent);border-color:var(--green);color:var(--green)}
+.port.int{border-style:dashed}
+.arr{align-self:center;color:var(--green);font-weight:800;font-size:1.3rem}
+.tbl{overflow-x:auto;margin:1rem 0;border:1px solid var(--line);border-radius:18px;background:var(--surface);box-shadow:var(--shadow)}
+.tbl table{width:100%;border-collapse:collapse;font-size:.95rem}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:.75rem 1rem;border-bottom:1px solid var(--line)}
+.tbl thead th{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+.tbl tbody th{font-weight:600;white-space:nowrap}
+.tbl td{color:var(--mute)}
+.tbl tr:last-child>*{border-bottom:0}
+@media(max-width:800px){.flow.chain{flex-direction:column}.flow.chain .arr{transform:rotate(90deg)}.tbl tbody th{white-space:normal}}
+
 /* Reveal on scroll: animation (not transition) so hover transforms still work afterwards */
 @keyframes rise{from{opacity:0;transform:translateY(24px)}}
 @keyframes route-fade{from{opacity:0}}
